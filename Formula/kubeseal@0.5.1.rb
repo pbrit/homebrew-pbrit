@@ -1,15 +1,15 @@
 # Courtesy of https://raw.githubusercontent.com/Homebrew/homebrew-core/master/Formula/kubeseal.rb
 class KubesealAT051 < Formula
     desc "Kubernetes controller and tool for one-way encrypted Secrets"
-    homepage "https://github.com/bitnami-labs/sealed-secrets"
-    url "https://github.com/bitnami-labs/sealed-secrets/archive/v0.5.1.tar.gz"
+    homepage "https://github.com/bitnami/sealed-secrets"
+    url "https://github.com/bitnami/sealed-secrets/archive/v0.5.1.tar.gz"
     sha256 "2802c39075472da30fb8c946aebfe60cb9b94a7ecc45416e088ade42ecb1ce61"
 
     depends_on "go" => :build
 
     def install
       ENV["GOPATH"] = buildpath
-      kubesealpath = buildpath/"src/github.com/bitnami-labs/sealed-secrets"
+      kubesealpath = buildpath/"src/github.com/bitnami/sealed-secrets"
       kubesealpath.install Dir["*"]
       system "make", "-C", kubesealpath, "kubeseal"
       bin.install kubesealpath/"kubeseal"
